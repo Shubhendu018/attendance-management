@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Attendance Management System</h1>
+            <p>Track and manage student attendance efficiently</p>
+        </header>
+
+        <div id="message" class="message"></div>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalStudents">0</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="presentToday">0</h3>
+                <p>Present Today</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="absentToday">0</h3>
+                <p>Absent Today</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="attendanceRate">0%</h3>
+                <p>Attendance Rate</p>
+            </div>
+        </div>
+
+        <!-- Add Student Form -->
+        <div class="card">
+            <h2>➕ Add New Student</h2>
+            <form id="addStudentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="studentName">Student Name *</label>
+                        <input type="text" id="studentName" required placeholder="Enter student name">
+                    </div>
+                    <div class="form-group">
+                        <label for="rollNumber">Roll Number *</label>
+                        <input type="text" id="rollNumber" required placeholder="Enter roll number">
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Class *</label>
+                        <input type="text" id="class" required placeholder="e.g., CSE-A">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="student@example.com">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Student</button>
+            </form>
+        </div>
+
+        <!-- Mark Attendance Form -->
+        <div class="card">
+            <h2>✅ Mark Attendance</h2>
+            <form id="markAttendanceForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="selectStudent">Select Student *</label>
+                        <select id="selectStudent" required>
+                            <option value="">-- Select Student --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="attendanceDate">Date *</label>
+                        <input type="date" id="attendanceDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="attendanceStatus">Status *</label>
+                        <select id="attendanceStatus" required>
+                            <option value="">-- Select Status --</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                            <option value="Late">Late</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="remarks">Remarks</label>
+                        <input type="text" id="remarks" placeholder="Optional notes">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Mark Attendance</button>
+            </form>
+        </div>
+
+        <!-- Filter and View Attendance -->
+        <div class="card">
+            <h2>📊 Attendance Records</h2>
+            <div class="filter-section">
+                <div class="form-group">
+                    <label for="filterClass">Filter by Class</label>
+                    <select id="filterClass">
+                        <option value="">All Classes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filterDate">Filter by Date</label>
+                    <input type="date" id="filterDate">
+                </div>
+                <div class="form-group">
+                    <label for="filterStatus">Filter by Status</label>
+                    <select id="filterStatus">
+                        <option value="">All Status</option>
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                        <option value="Late">Late</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Student Name</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Remarks</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 2rem; color: #999;">
+                                No attendance records found. Add students and mark attendance to get started.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
